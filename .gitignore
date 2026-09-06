@@ -1,0 +1,22 @@
+# 文件系统垃圾
+.DS_Store
+**/.DS_Store
+/docs/final_document/wateros-latex/tmp/
+
+# 构建产物
+/target/
+**/target/
+/build/
+**/build/
+
+# 项目工具/IDE 配置文件
+.codegraph/
+.idea/
+.vscode/
+.cursor/
+.worktrees/
+
+# python 运行垃圾
+__pycache__/
+*.py[cod]
+*.pyc
