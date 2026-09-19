@@ -1,0 +1,16 @@
+\chapter{环境、工程与启动过程}
+
+\section{任务 0：运行工程并观察启动}
+\begin{tipbox}
+目标是能够构建、启动 QEMU、连接调试器并识别从物理入口到学生内核入口的过程；不要求修改入口汇编、链接器脚本或启动页表。
+\end{tipbox}
+\placeholder{写入 VMware 导入、仓库初始化、首次构建、QEMU 启动、GDB 连接、预期输出和故障排查。}
+
+\section{任务 1：UART 输入输出}
+\placeholder{解释 MMIO、寄存器访问宽度、发送/接收轮询、串口回显测试和常见卡死原因。}
+
+\section{任务 2：工程接口与运行支持}
+\placeholder{说明外部函数、链接符号、资源边界、SBI 关机/TIME 调用和提供的内核堆的使用条件。}
+
+\section{任务 3：机器规范与 MMIO}
+\placeholder{从人类可读平台常量表出发，讲解 UART、RTC 与必要寄存器的访问。}
