@@ -1,0 +1,19 @@
+\documentclass[UTF8,zihao=-4,openany,fontset=none]{ctexbook}
+\input{common/preamble}
+
+\begin{document}
+\frontmatter
+\tableofcontents
+\mainmatter
+
+\part{课程规范}
+\makecoursecover{课程规范（Specification）}
+\input{spec/body}
+
+% 课程规范的附录结束后，恢复实验指导书的普通章节编号。
+\resetcoursechapters
+
+\part{实验指导书}
+\makecoursecover{实验指导书}
+\input{lab-manual/body}
+\end{document}

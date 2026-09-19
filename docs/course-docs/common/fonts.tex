@@ -1,0 +1,65 @@
+% 课程文档的统一字体配置。
+% 正文与标题中的中文统一使用宋体，西文统一使用 Times New Roman。
+% 代码环境保留等宽西文字体，以免破坏代码对齐。
+
+\RequirePackage{fontspec}
+
+% Overleaf 可在 assets/fonts/ 中放置合法授权的 Times New Roman 字体文件。
+\IfFileExists{assets/fonts/times.ttf}{%
+  \setmainfont{times.ttf}[
+    Path=assets/fonts/,
+    BoldFont=timesbd.ttf,
+    ItalicFont=timesi.ttf,
+    BoldItalicFont=timesbi.ttf
+  ]
+  \setsansfont{times.ttf}[
+    Path=assets/fonts/,
+    BoldFont=timesbd.ttf,
+    ItalicFont=timesi.ttf,
+    BoldItalicFont=timesbi.ttf
+  ]
+}{%
+  \IfFontExistsTF{Times New Roman}{%
+    \setmainfont{Times New Roman}
+    \setsansfont{Times New Roman}
+  }{%
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Termes}
+    \PackageWarningNoLine{sduos-fonts}{Times New Roman unavailable; using TeX Gyre Termes}
+  }%
+}
+
+% Overleaf 可在 assets/fonts/ 中放置合法授权的宋体字体文件。
+\IfFileExists{assets/fonts/simsun.ttc}{%
+  \setCJKmainfont{simsun.ttc}[
+    Path=assets/fonts/,
+    AutoFakeBold=2.5,
+    AutoFakeSlant=0.2
+  ]
+  \setCJKsansfont{simsun.ttc}[
+    Path=assets/fonts/,
+    AutoFakeBold=2.5,
+    AutoFakeSlant=0.2
+  ]
+  \setCJKmonofont{simsun.ttc}[
+    Path=assets/fonts/,
+    AutoFakeBold=2.5
+  ]
+}{%
+  \IfFontExistsTF{SimSun}{%
+    \setCJKmainfont{SimSun}[AutoFakeBold=2.5,AutoFakeSlant=0.2]
+    \setCJKsansfont{SimSun}[AutoFakeBold=2.5,AutoFakeSlant=0.2]
+    \setCJKmonofont{SimSun}[AutoFakeBold=2.5]
+  }{%
+    \setCJKmainfont{FandolSong-Regular}[
+      BoldFont=FandolSong-Bold,
+      AutoFakeSlant=0.2
+    ]
+    \setCJKsansfont{FandolSong-Regular}[
+      BoldFont=FandolSong-Bold,
+      AutoFakeSlant=0.2
+    ]
+    \setCJKmonofont{FandolSong-Regular}[BoldFont=FandolSong-Bold]
+    \PackageWarningNoLine{sduos-fonts}{SimSun unavailable; using Fandol Song}
+  }%
+}

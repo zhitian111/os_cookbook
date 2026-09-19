@@ -1,0 +1,17 @@
+% 合并多个可独立编译的文档时，恢复 CTeX 的普通章节编号状态。
+\makeatletter
+\newcommand{\resetcoursechapters}{%
+  \cleardoublepage
+  \setcounter{chapter}{0}%
+  \setcounter{section}{0}%
+  \setcounter{subsection}{0}%
+  \renewcommand{\thechapter}{\arabic{chapter}}%
+  \renewcommand{\thesection}{\thechapter.\arabic{section}}%
+  \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}%
+  \gdef\@chapapp{\chaptername}%
+  \gdef\CTEX@prechapter{}%
+  \gdef\CTEX@thechapter{\chinese{chapter}}%
+  \gdef\CTEX@postchapter{}%
+  \gdef\CTEX@chapter@numbering{1}%
+}
+\makeatother

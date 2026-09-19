@@ -1,0 +1,13 @@
+\chapter{系统调用与外部 ABI}
+
+\section{通用约定}
+系统调用遵循已固定的 Linux RISC-V 64 内核 ABI；课程仅支持本章逐项公开的调用和参数范围。未支持的请求须按指定错误语义拒绝，不得静默改作其他操作。
+
+\section{基础系统调用}
+\placeholder{按调用号、参数、成功返回、失败返回和限制列出 exit、read、write、brk、sleep 等接口。}
+
+\section{课程自定义接口}
+\placeholder{定义最简文件系统四个按名称操作、共享消息队列与 spawn 的课程调用号及结构体布局。}
+
+\section{错误、用户指针与整数边界}
+\placeholder{统一列出错误码、无效用户地址、长度溢出和失败原子性的约定。}

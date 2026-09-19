@@ -1,0 +1,22 @@
+\newcommand{\makecoursecover}[1]{%
+  \begin{titlepage}
+    \centering
+    \vspace*{1.3cm}
+    \IfFileExists{\CourseLogoPath}{\includegraphics[width=0.23\textwidth]{\CourseLogoPath}\par\vspace{1cm}}{}
+    {\Large \CourseUniversity\par}
+    \vspace{0.25cm}
+    {\large \CourseSchool\par}
+    \vfill
+    {\Huge\bfseries \CourseName\par}
+    \vspace{0.9cm}
+    {\LARGE #1\par}
+    \vfill
+    \begin{tabular}{rl}
+      适用学期： & \CourseTerm \\
+      文档版本： & \DocumentVersion \\
+      更新日期： & \DocumentDate \\
+      维护单位： & \DocumentOwner \\
+    \end{tabular}
+    \vspace*{1.2cm}
+  \end{titlepage}%
+}

@@ -1,0 +1,245 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{common/sduos}[2026/09/17 SDU OS course document style]
+
+% -----------------------------------------------------------------------------
+% Page, typography, and package foundation
+% -----------------------------------------------------------------------------
+\RequirePackage[a4paper,margin=2.55cm,headheight=15pt,footskip=1.2cm]{geometry}
+\RequirePackage[table]{xcolor}
+\RequirePackage{setspace}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{booktabs,longtable,tabularx,array,colortbl}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{listings}
+\RequirePackage{titlesec}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\RequirePackage{etoolbox}
+\RequirePackage{xurl}
+\RequirePackage{hyperref}
+\RequirePackage{bookmark}
+
+% -----------------------------------------------------------------------------
+% Color palette
+% -----------------------------------------------------------------------------
+\definecolor{CourseBlue}{HTML}{1F4E79}
+\definecolor{CourseBlueDark}{HTML}{173A5E}
+\definecolor{CourseBlueLight}{HTML}{EAF2F8}
+\definecolor{CourseGray}{HTML}{F4F6F8}
+\definecolor{CourseGrayDark}{HTML}{5C6670}
+\definecolor{CourseRule}{HTML}{D6DCE2}
+\definecolor{CourseGreen}{HTML}{287D5B}
+\definecolor{CourseGreenLight}{HTML}{EAF6F0}
+\definecolor{CourseOrange}{HTML}{A35A00}
+\definecolor{CourseOrangeLight}{HTML}{FFF4E5}
+\definecolor{CourseRed}{HTML}{A33A3A}
+\definecolor{CourseRedLight}{HTML}{FCEEEE}
+
+% -----------------------------------------------------------------------------
+% Body text and page breaking
+% -----------------------------------------------------------------------------
+\setstretch{1.35}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom
+
+% -----------------------------------------------------------------------------
+% Headings
+% -----------------------------------------------------------------------------
+\titleformat{\chapter}{\Huge\bfseries\color{CourseBlue}}{第\thechapter{}章}{0.8em}{}
+\titleformat{\section}{\Large\bfseries\color{CourseBlue}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\large\bfseries\color{CourseBlueDark}}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{CourseBlueDark}}{\thesubsubsection}{0.7em}{}
+\titleformat{\paragraph}[runin]{\normalsize\bfseries\color{CourseBlueDark}}{}{0pt}{}[。]
+\titlespacing*{\chapter}{0pt}{-0.5em}{1.5em}
+\titlespacing*{\section}{0pt}{1.8em}{0.8em}
+\titlespacing*{\subsection}{0pt}{1.4em}{0.6em}
+\titlespacing*{\subsubsection}{0pt}{1.1em}{0.45em}
+\titlespacing*{\paragraph}{0pt}{0.8em}{0.6em}
+
+% -----------------------------------------------------------------------------
+% Headers and footers
+% -----------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{CourseGrayDark}\CourseName}
+\fancyhead[R]{\small\color{CourseGrayDark}\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% -----------------------------------------------------------------------------
+% Links, bookmarks, and cross references
+% -----------------------------------------------------------------------------
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=CourseBlue,
+  urlcolor=CourseBlue,
+  citecolor=CourseBlue,
+  pdfborder={0 0 0},
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdftitle={\CourseName}
+}
+\newcommand{\chapref}[1]{第~\ref{#1}~章}
+\newcommand{\secref}[1]{第~\ref{#1}~节}
+\newcommand{\figref}[1]{图~\ref{#1}}
+\newcommand{\tabref}[1]{表~\ref{#1}}
+\newcommand{\coderef}[1]{代码~\ref{#1}}
+
+% -----------------------------------------------------------------------------
+% Lists
+% -----------------------------------------------------------------------------
+\setlist[itemize]{
+  leftmargin=2em,
+  label=\textcolor{CourseBlue}{\textbullet},
+  topsep=0.35em,
+  itemsep=0.15em,
+  parsep=0pt,
+  partopsep=0pt
+}
+\setlist[enumerate]{
+  leftmargin=2.4em,
+  topsep=0.35em,
+  itemsep=0.15em,
+  parsep=0pt,
+  partopsep=0pt
+}
+\setlist[description]{
+  leftmargin=2em,
+  style=nextline,
+  font=\bfseries\color{CourseBlueDark},
+  topsep=0.35em,
+  itemsep=0.25em
+}
+
+% -----------------------------------------------------------------------------
+% Figures and captions
+% -----------------------------------------------------------------------------
+\graphicspath{{assets/}}
+\captionsetup{
+  font=small,
+  labelfont={bf,color=CourseBlueDark},
+  textfont={color=CourseGrayDark},
+  labelsep=quad,
+  justification=centering,
+  singlelinecheck=true,
+  skip=0.55em
+}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+\AtBeginEnvironment{figure}{\centering}
+\AtBeginEnvironment{table}{\centering}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+
+% -----------------------------------------------------------------------------
+% Tables
+% -----------------------------------------------------------------------------
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{6pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Z}{>{\centering\arraybackslash}X}
+\newcommand{\tablehead}[1]{\cellcolor{CourseBlue}\color{white}\bfseries #1}
+\newcommand{\tablesubhead}[1]{\cellcolor{CourseBlueLight}\color{CourseBlueDark}\bfseries #1}
+\newcommand{\tablenote}[1]{\par\smallskip{\footnotesize\color{CourseGrayDark}#1}}
+
+% -----------------------------------------------------------------------------
+% Source code
+% -----------------------------------------------------------------------------
+\renewcommand{\lstlistingname}{代码}
+\renewcommand{\lstlistlistingname}{代码清单}
+\lstdefinestyle{coursecode}{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries\color{CourseBlue},
+  commentstyle=\itshape\color{CourseGreen},
+  stringstyle=\color{CourseOrange},
+  backgroundcolor=\color{CourseGray},
+  rulecolor=\color{CourseRule},
+  numberstyle=\tiny\color{CourseGrayDark},
+  numbers=left,
+  numbersep=0.8em,
+  stepnumber=1,
+  frame=single,
+  framerule=0.5pt,
+  framesep=0.7em,
+  xleftmargin=1.8em,
+  framexleftmargin=1.3em,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  tabsize=4,
+  captionpos=b,
+  aboveskip=0.9em,
+  belowskip=0.9em
+}
+\lstset{style=coursecode}
+
+% -----------------------------------------------------------------------------
+% Semantic inline helpers and callout boxes
+% -----------------------------------------------------------------------------
+\newcommand{\term}[1]{\textbf{\color{CourseBlueDark}#1}}
+\newcommand{\code}[1]{\texttt{\color{CourseBlueDark}#1}}
+\newcommand{\filename}[1]{\texttt{\color{CourseGreen}#1}}
+\newcommand{\placeholder}[1]{\textcolor{CourseGrayDark}{\textit{[待补充：#1]}}}
+
+\tcbset{
+  coursebox/.style={
+    enhanced,
+    breakable,
+    boxrule=0.7pt,
+    arc=1.2mm,
+    left=1em,
+    right=1em,
+    top=0.75em,
+    bottom=0.75em,
+    before skip=0.9em,
+    after skip=0.9em,
+    fonttitle=\bfseries,
+    coltitle=white,
+    attach boxed title to top left={xshift=1em,yshift*=-\tcboxedtitleheight/2},
+    boxed title style={boxrule=0pt,arc=0.8mm,left=0.7em,right=0.7em}
+  }
+}
+\newtcolorbox{requirementbox}[1][规范要求]{
+  coursebox,colback=CourseBlueLight,colframe=CourseBlue,
+  colbacktitle=CourseBlue,title={#1}
+}
+\newtcolorbox{tipbox}[1][学习提示]{
+  coursebox,colback=CourseGreenLight,colframe=CourseGreen,
+  colbacktitle=CourseGreen,title={#1}
+}
+\newtcolorbox{notebox}[1][说明]{
+  coursebox,colback=CourseGray,colframe=CourseGrayDark,
+  colbacktitle=CourseGrayDark,title={#1}
+}
+\newtcolorbox{warningbox}[1][注意]{
+  coursebox,colback=CourseOrangeLight,colframe=CourseOrange,
+  colbacktitle=CourseOrange,title={#1}
+}
+\newtcolorbox{testbox}[1][验收检查]{
+  coursebox,colback=CourseRedLight,colframe=CourseRed,
+  colbacktitle=CourseRed,title={#1}
+}
