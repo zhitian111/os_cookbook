@@ -1,0 +1,23 @@
+# Versions are intentionally centralized here. Python source must not contain
+# component version literals.
+
+[qemu]
+apt_package = "qemu-system-riscv"
+executable = "qemu-system-riscv64"
+
+[riscv_gnu]
+gcc_package = "gcc-riscv64-unknown-elf"
+binutils_package = "binutils-riscv64-unknown-elf"
+gcc_executable = "riscv64-unknown-elf-gcc"
+binutils_prefix = "riscv64-unknown-elf"
+
+[gdb]
+package = "gdb-multiarch"
+
+[rust]
+installer_package = "rustup"
+toolchain = "nightly-2026-09-01"
+profile = "minimal"
+targets = ["riscv64imac-unknown-none-elf"]
+components = ["rust-src", "llvm-tools-preview", "rustfmt", "clippy"]
+required_programs = ["rustup", "rustc", "cargo", "rustfmt", "cargo-clippy", "rust-objdump"]

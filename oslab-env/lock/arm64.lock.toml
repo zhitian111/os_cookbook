@@ -1,0 +1,11 @@
+environment_version = "2026.1-dev"
+architecture = "arm64"
+status = "unresolved"
+
+[packages]
+qemu_package = "qemu-system-riscv"
+riscv_gnu_gcc_package = "gcc-riscv64-unknown-elf"
+riscv_gnu_binutils_package = "binutils-riscv64-unknown-elf"
+rust_toolchain = "nightly-2026-09-01"
+
+[apt_versions]

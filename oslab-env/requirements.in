@@ -1,0 +1,2 @@
+# The installer currently uses only the Python standard library.
+# Add direct runtime dependencies here, then regenerate requirements.lock.
